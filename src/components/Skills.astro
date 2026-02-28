@@ -1,0 +1,77 @@
+---
+const skillCategories = [
+  {
+    title: 'Languages',
+    color: 'electric',
+    skills: ['Ruby', 'C#', 'JavaScript', 'SQL'],
+  },
+  {
+    title: 'Frameworks',
+    color: 'purple',
+    skills: ['Ruby on Rails', '.NET', 'Node.js'],
+  },
+  {
+    title: 'Databases & Messaging',
+    color: 'coral',
+    skills: ['PostgreSQL', 'RabbitMQ', 'Amazon SQS'],
+  },
+  {
+    title: 'Payments',
+    color: 'mint',
+    skills: ['Stripe', 'Stripe Connect', 'Payment Processing'],
+  },
+  {
+    title: 'Cloud & DevOps',
+    color: 'electric',
+    skills: ['AWS', 'Datadog', 'CI/CD'],
+  },
+  {
+    title: 'Practices',
+    color: 'purple',
+    skills: ['AI-Assisted Development', 'System Migrations', 'API Design'],
+  },
+];
+
+const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
+  electric: { border: 'border-electric/30', bg: 'bg-electric/5', text: 'text-electric', dot: 'bg-electric' },
+  purple: { border: 'border-purple/30', bg: 'bg-purple/5', text: 'text-purple', dot: 'bg-purple' },
+  coral: { border: 'border-coral/30', bg: 'bg-coral/5', text: 'text-coral', dot: 'bg-coral' },
+  mint: { border: 'border-mint/30', bg: 'bg-mint/5', text: 'text-mint', dot: 'bg-mint' },
+};
+---
+
+<section id="skills" class="py-24 px-4 bg-navy-800/30">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-16">
+      <span class="font-mono text-sm text-electric">// skills</span>
+      <h2 class="font-display text-4xl font-bold text-white mt-2">
+        Technologies & Tools
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-electric to-purple mt-4 rounded"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skillCategories.map((category, i) => {
+        const colors = colorMap[category.color];
+        return (
+          <div
+            class={`reveal skill-card p-6 rounded-xl bg-navy-800/50 border ${colors.border} backdrop-blur-sm`}
+            style={`transition-delay: ${i * 100}ms;`}
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div class={`w-2 h-2 rounded-full ${colors.dot}`}></div>
+              <h3 class={`font-display font-semibold ${colors.text}`}>{category.title}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <span class={`px-3 py-1 text-sm rounded-full ${colors.bg} ${colors.text} border ${colors.border}`}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
