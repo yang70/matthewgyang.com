@@ -4,6 +4,7 @@ const experiences = [
     company: 'Apartments.com',
     role: 'Senior Software Engineer, Payments Team',
     period: '2019 — Present',
+    location: 'Portland, OR',
     color: 'electric',
     highlights: [
       'Assisted in migrating thousands of users from Cozy.co to the Apartments.com platform',
@@ -16,6 +17,7 @@ const experiences = [
     company: 'Cozy.co',
     role: 'Senior Software Engineer',
     period: '2019',
+    location: 'Portland, OR',
     color: 'purple',
     highlights: [
       'Full-stack development with Ruby and JavaScript',
@@ -27,6 +29,7 @@ const experiences = [
     company: 'Sportsrocket',
     role: 'Software Engineer / Technical Team Lead',
     period: '2016 — 2019',
+    location: 'Bellevue, WA',
     color: 'coral',
     highlights: [
       'Full-stack development with Ruby on Rails and Angular for a sports streaming platform',
@@ -83,7 +86,8 @@ const colorMap: Record<string, { dot: string; border: string; text: string }> = 
                 <h3 class="font-display text-xl font-bold text-white">{exp.company}</h3>
                 <span class="font-mono text-xs text-slate-500 mt-1 sm:mt-0">{exp.period}</span>
               </div>
-              <p class={`text-sm font-medium ${colors.text} mb-4`}>{exp.role}</p>
+              <p class={`text-sm font-medium ${colors.text} mb-1`}>{exp.role}</p>
+              {exp.location && <p class="text-xs text-slate-500 mb-4">{exp.location}</p>}
               <ul class="space-y-2">
                 {exp.highlights.map((highlight) => (
                   <li class="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
